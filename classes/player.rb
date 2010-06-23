@@ -5,28 +5,13 @@ class Player
     @score = 0
     @width = 25
     @height = 30
-    @x = @y = 0
+    @x = (Flonkerton::CONFIG[:width]/2) - (@width / 2)
+    @y = Flonkerton::CONFIG[:height] - Flonkerton::CONFIG[:PLAYER_Y_POSITION_FROM_BOTTOM].to_i
     @health = 2
     @perk = DefaultPerk.new
     @old_perk = @perk
     @last_shot = Gosu::milliseconds
     @image = Flonkerton::Images[:ship]
-  end
-
-  def place(x)
-    if x.is_a? Fixnum then
-      @x = x
-    elsif x.is_a? Symbol then
-      case x
-      when :left then
-        @x = 0
-      when :center then
-        @x = (Flonkerton::CONFIG[:width]/2) - (@width / 2)
-      when :right then
-        @x = Flonkerton::CONFIG[:width] - @width
-      end
-    end
-    @y = Flonkerton::CONFIG[:height] - Flonkerton::CONFIG[:PLAYER_Y_POSITION_FROM_BOTTOM].to_i
   end
 
   def move(direction)
