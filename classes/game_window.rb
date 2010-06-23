@@ -1,5 +1,7 @@
 class GameWindow < Flonkerton::Screen
+
   attr_accessor :player
+
   def setup
     @player = Player.new
     @grid = EnemyGrid.new(width, height, 2, 8)
@@ -85,4 +87,3 @@ class GameWindow < Flonkerton::Screen
     end
   end
 end
-

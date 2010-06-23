@@ -1,11 +1,13 @@
 class Player
+
   attr_accessor :width, :height, :x, :y, :score
+
   def initialize
     @lives = 5
     @score = 0
     @width = 25
     @height = 30
-    @x = (Flonkerton::CONFIG[:width]/2) - (@width / 2)
+    @x = Flonkerton::CONFIG[:width] / 2 - @width / 2
     @y = Flonkerton::CONFIG[:height] - Flonkerton::CONFIG[:PLAYER_Y_POSITION_FROM_BOTTOM].to_i
     @health = 2
     @perk = DefaultPerk.new
@@ -31,7 +33,7 @@ class Player
   end
 
   def shoot
-    _shoot(@perk.shot_type) unless (Gosu::milliseconds - @last_shot) < @perk.shooting_interval
+    _shoot(@perk.shot_type) unless reloading?
   end
 
   def draw
@@ -54,15 +56,20 @@ class Player
     @health <= 0
   end
 
+  def reloading?
+    Gosu::milliseconds - @last_shot < @perk.shooting_interval
+  end
+
   def add_bonus(bonus)
     @old_perk = @perk
     @perk = bonus.perk.new
     _perk_wear_off_after(bonus.duration)
   end
-  
+
   def remove_bonus
     @perk = @old_perk
   end
+
   def reset_all_perks
     @perk = DefaultPerk.new
   end
@@ -92,14 +99,11 @@ private
     end
     @last_shot = Gosu::milliseconds
   end
-  
+
   def _perk_wear_off_after(seconds)
     e = ScheduledEvent.new(seconds) do
       reset_all_perks
       e.destroy
     end
-    
   end
-
 end
-

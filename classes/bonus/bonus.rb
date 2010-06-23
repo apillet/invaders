@@ -56,6 +56,4 @@ class Bonus
   def speed
     raise NotImplementedError
   end
-
 end
-

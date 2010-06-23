@@ -1,6 +1,9 @@
 class EnemyGrid
+
   attr_accessor :table, :rows, :cols
+
   @@levels = Hash.new
+
   def initialize(w,h,rows,cols, options = {})
     defaults = {:x_padding => 40, :y_padding => 30}
     defaults.merge options
@@ -8,7 +11,7 @@ class EnemyGrid
     @width = w - (defaults[:x_padding] * 2)
     @height = (h - defaults[:y_padding]) * 0.5
     @rows, @cols = rows, cols
-    
+
     @cell_width = @width / cols
     @cell_height = @height / rows
 
@@ -73,22 +76,22 @@ class EnemyGrid
     end
     raise NoFreeCellException if free_cell == false
   end
-  
+
   private
-  
+
   def reset_table
     @rows = @@levels[@level][:rows]
     @cols = @@levels[@level][:cols]
-    
+
     @cell_width = @width / cols
     @cell_height = @height / rows
-    
+
     @table = Array.new(@rows)
     @table.each_with_index do |row,rindex|
       @table[rindex] = Array.new(@cols)
     end
   end
-  
+
   def parse_levels(filename)
     f = File.open(filename, "r")
     lvl = nil
@@ -120,6 +123,4 @@ class EnemyGrid
     end
     return arr
   end
-
 end
-
