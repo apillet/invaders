@@ -5,8 +5,6 @@ class GameWindow < Flonkerton::Screen
     @player.place :center
     @background = Flonkerton::Images[:menu]
     @grid = EnemyGrid.new(@game,width, height, 2, 8)
-    @screen = :game
-
     initialize_events
   end
 
@@ -19,17 +17,13 @@ class GameWindow < Flonkerton::Screen
   end
 
   def update
-    case @screen
-      when :game then
-        if button_down? Gosu::Button::KbLeft then
-          @player.move :left
-        elsif button_down? Gosu::Button::KbRight then
-          @player.move :right
-        end
-        if button_down? Gosu::Button::KbSpace then
-          @player.shoot
-        end
-      else
+    if button_down? Gosu::Button::KbLeft then
+      @player.move :left
+    elsif button_down? Gosu::Button::KbRight then
+      @player.move :right
+    end
+    if button_down? Gosu::Button::KbSpace then
+      @player.shoot
     end
     if button_down? Gosu::Button::KbEscape then
       close
