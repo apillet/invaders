@@ -59,15 +59,15 @@ class GameWindow < Flonkerton::Screen
 
   def initialize_events
     RandomEvent.new(5,0.2) do
-      DoubleShotBonus.new(rand * width, -10)
+      DoubleShotBonus.new
     end
 
     RandomEvent.new(5,0.1) do
-      TripleShotBonus.new(rand * width, -10)
+      TripleShotBonus.new
     end
 
     RandomEvent.new(5,0.3) do
-      DoubleSpeedBonus.new(rand * width, -10)
+      DoubleSpeedBonus.new
     end
 
     RandomEvent.new(10,0.8) do

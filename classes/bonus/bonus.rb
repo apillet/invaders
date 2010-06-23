@@ -1,8 +1,9 @@
 class Bonus
   attr_reader :x, :y, :width, :height, :perk, :duration
   @@bonuses = Array.new
-  def initialize(x,y)
-    @x, @y = x, y
+  def initialize
+    @x = rand(Flonkerton::CONFIG[:width])
+    @y = -10
     @width, @height = 5,5
     @perk = nil
     @duration = 4
