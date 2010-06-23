@@ -86,14 +86,6 @@ class EnemyGrid
     @table.each_with_index do |row,rindex|
       @table[rindex] = Array.new(@cols)
     end
-    #@table.each_with_index do |row, rindex|
-    #  row.each_with_index do |column, cindex|
-    #    if not column.nil? and column.is_a? Enemy then
-    #      column.destroy
-    #      column = nil
-    #    end
-    #  end
-    #end
   end
   
   def parse_levels(filename)

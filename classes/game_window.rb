@@ -13,26 +13,10 @@ class GameWindow < Gosu::Window
     @player = Player.new(self)
     @player.place :center
     @background = Gosu::Image.new(self, "media/menu.png", true)
-
     @grid = EnemyGrid.new(self,@width, @height, 2, 8)
-
     @screen = :game
 
     initialize_events
-
- #   @grid.cols.times do |index|
- #     @grid << NormalEnemy.new(self, @grid.next_available_position)
- #   end
- #   @grid.cols.times do |index|
- #     @grid << FireEnemy.new(self, @grid.next_available_position)
- #   end
- #   @grid.cols.times do |index|
- #     @grid << NormalEnemy.new(self, @grid.next_available_position)
- #   end
- #   @grid.cols.times do |index|
- #     @grid << FireEnemy.new(self, @grid.next_available_position)
- #   end
-
   end
 
   def draw
@@ -62,13 +46,9 @@ class GameWindow < Gosu::Window
 
     ScheduledEvent.call_all
     RandomEvent.call_all
-
     Bullet.move_all
-
     Bonus.move_all
-
     check_collisions
-
   end
 
   private
@@ -87,12 +67,6 @@ class GameWindow < Gosu::Window
           player_bullet.destroy
         end
       end
-      #Bonus.all.each do |bonus|
-      #  if player_bullet.collides?(bonus) then
-      #    player_bullet.destroy
-      #    bonus.destroy
-      #  end
-      #end
     end
     Bonus.all.each do |bonus|
       if bonus.collides?(@player) then
@@ -106,34 +80,33 @@ class GameWindow < Gosu::Window
   end
 
   def initialize_events
-    double_shot_bonus_event = RandomEvent.new(5,0.2) do
+    RandomEvent.new(5,0.2) do
       DoubleShotBonus.new(self,rand * @width, -10)
     end
 
-    triple_shot_bonus_event = RandomEvent.new(5,0.1) do
+    RandomEvent.new(5,0.1) do
       TripleShotBonus.new(self, rand * width, -10)
     end
 
-    double_speed_bonus_event = RandomEvent.new(5,0.3) do
+    RandomEvent.new(5,0.3) do
       DoubleSpeedBonus.new(self, rand * width, -10)
     end
 
-    renew_shooting_patterns = RandomEvent.new(10,0.8) do
+    RandomEvent.new(10,0.8) do
       Enemy.all.each do |enemy|
         enemy.renew_shooting_pattern
       end
     end
 
-    enemies_approaching_event = ScheduledEvent.new(1.5) do
+    ScheduledEvent.new(1.5) do
       Enemy.all.each do |enemy|
         enemy.approach(5)
       end
     end
 
-    animate_enemies_event = ScheduledEvent.new(0.7) do
+    ScheduledEvent.new(0.7) do
       Enemy.move_all
     end
   end
-
 end
 
