@@ -1,5 +1,5 @@
 class FireEnemy < Enemy
-  def initialize(window,x_y)
+  def initialize(x_y)
     super
     @width = 26
     @height = 24
@@ -10,7 +10,7 @@ class FireEnemy < Enemy
 
   def shoot
     direction = [:left,:none,:right].shuffle.first
-    EnemyFireBullet.new(@window,@x + (@width / 2), @y + @height, direction)
+    EnemyFireBullet.new(@x + (@width / 2), @y + @height, direction)
   end
 
   private

@@ -1,6 +1,6 @@
  class NormalEnemy < Enemy
 
-  def initialize(window,x_y)
+  def initialize(x_y)
     super
     @width = 26
     @height = 23

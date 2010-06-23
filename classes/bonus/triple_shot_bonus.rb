@@ -1,6 +1,6 @@
 class TripleShotBonus < Bonus
 
-  def initialize(window,x,y)
+  def initialize(x,y)
     super
     @img = Flonkerton::Images[:triple_shot_bonus]
     @perk = TripleShotPerk

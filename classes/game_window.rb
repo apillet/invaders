@@ -1,10 +1,10 @@
 class GameWindow < Flonkerton::Screen
   attr_accessor :player
   def setup
-    @player = Player.new(@game)
+    @player = Player.new
     @player.place :center
     @background = Flonkerton::Images[:menu]
-    @grid = EnemyGrid.new(@game,width, height, 2, 8)
+    @grid = EnemyGrid.new(width, height, 2, 8)
     initialize_events
   end
 
@@ -17,6 +17,8 @@ class GameWindow < Flonkerton::Screen
   end
 
   def update
+    close if @player.dead?
+
     if button_down? Gosu::Button::KbLeft then
       @player.move :left
     elsif button_down? Gosu::Button::KbRight then
@@ -63,15 +65,15 @@ class GameWindow < Flonkerton::Screen
 
   def initialize_events
     RandomEvent.new(5,0.2) do
-      DoubleShotBonus.new(@game,rand * width, -10)
+      DoubleShotBonus.new(rand * width, -10)
     end
 
     RandomEvent.new(5,0.1) do
-      TripleShotBonus.new(@game, rand * width, -10)
+      TripleShotBonus.new(rand * width, -10)
     end
 
     RandomEvent.new(5,0.3) do
-      DoubleSpeedBonus.new(@game, rand * width, -10)
+      DoubleSpeedBonus.new(rand * width, -10)
     end
 
     RandomEvent.new(10,0.8) do

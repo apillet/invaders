@@ -1,6 +1,6 @@
 class DoubleSpeedBonus < Bonus
 
-  def initialize(window,x,y)
+  def initialize(x,y)
     super
     @img = Flonkerton::Images[:double_speed_bonus]
     @perk = DoubleSpeedPerk

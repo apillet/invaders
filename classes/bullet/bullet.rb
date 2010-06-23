@@ -1,11 +1,10 @@
 class Bullet
   attr_reader :x, :y, :power
   @@bullets = Array.new
-  def initialize(window,x,y,direction = :none)
+  def initialize(x,y,direction = :none)
     @x, @y = x, y
     @width, @height = 3, 6
     @direction = direction
-    @window = window
     @power = 1
     @@bullets << self
     @img = nil

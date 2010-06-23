@@ -1,10 +1,9 @@
 class EnemyGrid
   attr_accessor :table, :rows, :cols
   @@levels = Hash.new
-  def initialize(window,w,h,rows,cols, options = {})
+  def initialize(w,h,rows,cols, options = {})
     defaults = {:x_padding => 40, :y_padding => 30}
     defaults.merge options
-    @window = window
     @x, @y = defaults[:x_padding], defaults[:y_padding]
     @width = w - (defaults[:x_padding] * 2)
     @height = (h - defaults[:y_padding]) * 0.5
@@ -38,7 +37,7 @@ class EnemyGrid
 
         if col
           klass = Module.class_eval(Flonkerton::CONFIG[col.to_sym])
-          @table[rindex][cindex] = klass.new(@window, position)
+          @table[rindex][cindex] = klass.new(position)
         end
       end
     end

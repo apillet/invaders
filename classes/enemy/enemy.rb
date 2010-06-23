@@ -1,10 +1,9 @@
 class Enemy
   attr_reader :x, :y, :width, :height
   @@enemies = Array.new
-  def initialize(window,x_y)
+  def initialize(x_y)
     @width, @height = 20,20
     @x, @y = x_y[0], x_y[1]
-    @window = window
     @img = nil
     @pattern = nil
     @facing = nil
@@ -43,7 +42,7 @@ class Enemy
   end
 
   def shoot
-    EnemyBullet.new(@window,@x + (@width / 2), @y + @height)
+    EnemyBullet.new(@x + (@width / 2), @y + @height)
   end
 
   def renew_shooting_pattern

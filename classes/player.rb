@@ -1,7 +1,6 @@
 class Player
   attr_accessor :width, :height, :x, :y, :score
-  def initialize(window,options = {})
-    @window = window
+  def initialize
     @lives = 5
     @score = 0
     @width = 25
@@ -22,12 +21,12 @@ class Player
       when :left then
         @x = 0
       when :center then
-        @x = (@window.width/2) - (@width / 2)
+        @x = (Flonkerton::CONFIG[:width]/2) - (@width / 2)
       when :right then
-        @x = @window.width - @width
+        @x = Flonkerton::CONFIG[:width] - @width
       end
     end
-    @y = @window.height - Flonkerton::CONFIG[:PLAYER_Y_POSITION_FROM_BOTTOM].to_i
+    @y = Flonkerton::CONFIG[:height] - Flonkerton::CONFIG[:PLAYER_Y_POSITION_FROM_BOTTOM].to_i
   end
 
   def move(direction)
@@ -37,7 +36,7 @@ class Player
         @x -= Flonkerton::CONFIG[:PLAYER_MOVING_DISTANCE].to_i
       end
     when :right then
-      unless @window.width - @x <= Flonkerton::CONFIG[:PLAYER_MOVING_DISTANCE].to_i then
+      unless Flonkerton::CONFIG[:width] - @x <= Flonkerton::CONFIG[:PLAYER_MOVING_DISTANCE].to_i then
         @x += Flonkerton::CONFIG[:PLAYER_MOVING_DISTANCE].to_i
       end
     end
@@ -55,13 +54,16 @@ class Player
 
   def die
     puts "DIED"
-    @window.close
+    @health = 0
   end
 
   def hurt(damage)
     @health -= damage
     puts "HURT"
-    die if @health <= 0
+  end
+
+  def dead?
+    @health <= 0
   end
 
   def add_bonus(bonus)
@@ -91,14 +93,14 @@ private
   def _shoot(type)
     case type
     when :single then
-      NormalBullet.new(@window,@x + (@width / 2), @y)
+      NormalBullet.new(@x + (@width / 2), @y)
     when :double then
-      NormalBullet.new(@window,@x + (@width / 3), @y)
-      NormalBullet.new(@window,(@x + @width) - (@width / 3), @y)
+      NormalBullet.new(@x + (@width / 3), @y)
+      NormalBullet.new((@x + @width) - (@width / 3), @y)
     when :triple then
-      NormalBullet.new(@window,@x + (@width / 4), @y, :left)
-      NormalBullet.new(@window,@x + (@width / 2), @y)
-      NormalBullet.new(@window,(@x + @width) - (@width / 4), @y, :right)
+      NormalBullet.new(@x + (@width / 4), @y, :left)
+      NormalBullet.new(@x + (@width / 2), @y)
+      NormalBullet.new((@x + @width) - (@width / 4), @y, :right)
     end
     @last_shot = Gosu::milliseconds
   end

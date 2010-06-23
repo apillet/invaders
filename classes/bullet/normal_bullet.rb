@@ -1,5 +1,5 @@
 class NormalBullet < PlayerBullet
-  def initialize(window,x,y, direction = :none)
+  def initialize(x,y, direction = :none)
     super
     @img = Flonkerton::Images[:normal_bullet]
   end

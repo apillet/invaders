@@ -1,12 +1,12 @@
 class EnemyBullet < Bullet
-  def initialize(window,x,y,direction = :none)
+  def initialize(x,y,direction = :none)
     super
     @img = Flonkerton::Images[:enemy_bullet]
   end
 
   def move
     @y += speed
-    destroy if @y >= @window.height
+    destroy if @y >= Flonkerton::CONFIG[:height]
   end
 
   private
