@@ -2,13 +2,11 @@ class GameWindow < Flonkerton::Screen
   attr_accessor :player
   def setup
     @player = Player.new
-    @background = Flonkerton::Images[:menu]
     @grid = EnemyGrid.new(width, height, 2, 8)
     initialize_events
   end
 
   def draw
-    @background.draw
     @player.draw
     Bullet.draw_all
     Enemy.draw_all
