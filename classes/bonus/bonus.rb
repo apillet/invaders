@@ -16,7 +16,9 @@ class Bonus
   end
 
   def draw
-    @img.draw(@x,@y,1)
+    @img.draw :x => @x,
+              :y => @y,
+              :z => 1
   end
 
   def destroy

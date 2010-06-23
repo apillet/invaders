@@ -8,12 +8,10 @@ class Player
     @height = 30
     @x = @y = 0
     @health = 2
-
     @perk = DefaultPerk.new
     @old_perk = @perk
     @last_shot = Gosu::milliseconds
-
-    @image = Gosu::Image.new(@window, "media/ship.png", true)
+    @image = Flonkerton::Images[:ship]
   end
 
   def place(x)
@@ -50,7 +48,9 @@ class Player
   end
 
   def draw
-    @image.draw(@x,@y,1)
+    @image.draw :x => @x,
+                :y => @y,
+                :z => 1
   end
 
   def die

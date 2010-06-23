@@ -2,7 +2,7 @@ class EnemyFireBullet < Bullet
   def initialize(window,x,y,direction = :none)
     super
     @width, @height = 5, 7
-    @img = Gosu::Image.new(@window, "media/enemy_fire_bullet.png", true)
+    @img = Flonkerton::Images[:enemy_fire_bullet]
   end
 
   def move

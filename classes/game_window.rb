@@ -3,7 +3,7 @@ class GameWindow < Flonkerton::Screen
   def setup
     @player = Player.new(@game)
     @player.place :center
-    @background = Gosu::Image.new(@game, "media/menu.png", true)
+    @background = Flonkerton::Images[:menu]
     @grid = EnemyGrid.new(@game,width, height, 2, 8)
     @screen = :game
 
@@ -11,7 +11,7 @@ class GameWindow < Flonkerton::Screen
   end
 
   def draw
-    @background.draw(0,0,0)
+    @background.draw
     @player.draw
     Bullet.draw_all
     Enemy.draw_all

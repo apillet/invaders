@@ -2,7 +2,7 @@ class TripleShotBonus < Bonus
 
   def initialize(window,x,y)
     super
-    @img = Gosu::Image.new(@window, "media/triple_shot_bonus.png", true)
+    @img = Flonkerton::Images[:triple_shot_bonus]
     @perk = TripleShotPerk
     @duration = 2
   end

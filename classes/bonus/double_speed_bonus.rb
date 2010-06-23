@@ -2,7 +2,7 @@ class DoubleSpeedBonus < Bonus
 
   def initialize(window,x,y)
     super
-    @img = Gosu::Image.new(@window, "media/double_speed_bonus.png", true)
+    @img = Flonkerton::Images[:double_speed_bonus]
     @perk = DoubleSpeedPerk
     @duration = 3
   end

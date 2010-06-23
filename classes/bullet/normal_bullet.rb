@@ -1,7 +1,7 @@
 class NormalBullet < PlayerBullet
   def initialize(window,x,y, direction = :none)
     super
-    @img = Gosu::Image.new(@window, "media/normal_bullet.png", true)
+    @img = Flonkerton::Images[:normal_bullet]
   end
 
   private

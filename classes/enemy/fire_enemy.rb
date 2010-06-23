@@ -3,7 +3,7 @@ class FireEnemy < Enemy
     super
     @width = 26
     @height = 24
-    @img = Gosu::Image.new(@window, "media/fire_enemy.png", true)
+    @img = Flonkerton::Images[:fire_enemy]
     @pattern = nil
     @facing = :left
   end
