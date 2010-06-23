@@ -1,19 +1,13 @@
-class GameWindow < Gosu::Window
-  attr_accessor :width, :height, :player
-  def initialize(w = 640, h = 480)
-    # Set window size and caption
-    super(w, h, false, 20)
-    @width = w
-    @height = h
-    self.caption = "Space Invaders 0.1 Beta"
-
+class GameWindow < Flonkerton::Screen
+  attr_accessor :player
+  def setup
     # Load XML Settings
     Settings.load
 
-    @player = Player.new(self)
+    @player = Player.new(@game)
     @player.place :center
-    @background = Gosu::Image.new(self, "media/menu.png", true)
-    @grid = EnemyGrid.new(self,@width, @height, 2, 8)
+    @background = Gosu::Image.new(@game, "media/menu.png", true)
+    @grid = EnemyGrid.new(@game,width, height, 2, 8)
     @screen = :game
 
     initialize_events
@@ -81,15 +75,15 @@ class GameWindow < Gosu::Window
 
   def initialize_events
     RandomEvent.new(5,0.2) do
-      DoubleShotBonus.new(self,rand * @width, -10)
+      DoubleShotBonus.new(@game,rand * width, -10)
     end
 
     RandomEvent.new(5,0.1) do
-      TripleShotBonus.new(self, rand * width, -10)
+      TripleShotBonus.new(@game, rand * width, -10)
     end
 
     RandomEvent.new(5,0.3) do
-      DoubleSpeedBonus.new(self, rand * width, -10)
+      DoubleSpeedBonus.new(@game, rand * width, -10)
     end
 
     RandomEvent.new(10,0.8) do

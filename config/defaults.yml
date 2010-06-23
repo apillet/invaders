@@ -1,0 +1,39 @@
+# Window
+#
+:width: 640
+:height: 480
+:caption: Space Invaders 0.1 Beta
+:font_size: 20
+:fullscreen: false
+:initial_screen: GameScreen
+
+# Resources
+#
+:media_path: media
+:fonts_ext: *.ttf
+:songs_ext: *.ogg
+:tiles_ext: *.png
+:images_ext: *.png
+:samples_ext: *.wav
+
+# Defaults
+#
+:image:
+  :x: 0
+  :y: 0
+  :z: 0
+  :factor_x: 1
+  :factor_y: 1
+  :color: 0xffffffff
+  :mode: :default
+  :order: [:x, :y, :z, :factor_x, :factor_y, :color, :mode] # For 1.8.6 - Don't change this
+:font:
+  :text: ''
+  :x: 0
+  :y: 0
+  :z: 0
+  :factor_x: 1
+  :factor_y: 1
+  :color: 0xffffffff
+  :mode: :default
+  :order: [:text, :x, :y, :z, :factor_x, :factor_y, :color, :mode] # For 1.8.6 - Don't change this

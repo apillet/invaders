@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'gosu'
+require 'flonkerton'
 require 'rexml/document'
 
 require 'classes/exceptions'
@@ -34,7 +34,4 @@ require 'classes/bonus/double_shot_bonus'
 require 'classes/bonus/triple_shot_bonus'
 require 'classes/bonus/double_speed_bonus'
 
-window = GameWindow.new
-
-window.show
-
+Flonkerton::Game.start(GameWindow)
