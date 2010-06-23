@@ -15,9 +15,7 @@ class EnemyGrid
 
     @level = 0
     @@levels = parse_levels "levels.grd"
-    set_grid_for_level Settings.START_LEVEL.to_i
-
-
+    set_grid_for_level Flonkerton::CONFIG[:START_LEVEL].to_i
   end
 
   def <<(enemy)
@@ -37,7 +35,11 @@ class EnemyGrid
     @@levels[num][:grid].each_with_index do |row,rindex|
       row.each_with_index do |col,cindex|
         position = [@x + (cindex * @cell_width), @y + (rindex * @cell_height)]
-        @table[rindex][cindex] = eval(Settings.send(col) + '.new(@window, position)') if col
+
+        if col
+          klass = Module.class_eval(Flonkerton::CONFIG[col.to_sym])
+          @table[rindex][cindex] = klass.new(@window, position)
+        end
       end
     end
     show

@@ -29,18 +29,18 @@ class Player
         @x = @window.width - @width
       end
     end
-    @y = @window.height - Settings.PLAYER_Y_POSITION_FROM_BOTTOM.to_i
+    @y = @window.height - Flonkerton::CONFIG[:PLAYER_Y_POSITION_FROM_BOTTOM].to_i
   end
 
   def move(direction)
     case direction
     when :left then
-      unless @x <= Settings.PLAYER_MOVING_DISTANCE.to_i then
-        @x -= Settings.PLAYER_MOVING_DISTANCE.to_i
+      unless @x <= Flonkerton::CONFIG[:PLAYER_MOVING_DISTANCE].to_i then
+        @x -= Flonkerton::CONFIG[:PLAYER_MOVING_DISTANCE].to_i
       end
     when :right then
-      unless @window.width - @x <= Settings.PLAYER_MOVING_DISTANCE.to_i then
-        @x += Settings.PLAYER_MOVING_DISTANCE.to_i
+      unless @window.width - @x <= Flonkerton::CONFIG[:PLAYER_MOVING_DISTANCE].to_i then
+        @x += Flonkerton::CONFIG[:PLAYER_MOVING_DISTANCE].to_i
       end
     end
   end

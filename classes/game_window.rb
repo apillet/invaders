@@ -1,9 +1,6 @@
 class GameWindow < Flonkerton::Screen
   attr_accessor :player
   def setup
-    # Load XML Settings
-    Settings.load
-
     @player = Player.new(@game)
     @player.place :center
     @background = Gosu::Image.new(@game, "media/menu.png", true)

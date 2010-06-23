@@ -37,3 +37,11 @@
   :color: 0xffffffff
   :mode: :default
   :order: [:text, :x, :y, :z, :factor_x, :factor_y, :color, :mode] # For 1.8.6 - Don't change this
+
+# Settings
+#
+:PLAYER_MOVING_DISTANCE: 10
+:PLAYER_Y_POSITION_FROM_BOTTOM: 40
+:START_LEVEL: 1
+:n: NormalEnemy
+:f: FireEnemy

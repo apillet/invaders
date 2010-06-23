@@ -1,10 +1,8 @@
 require 'rubygems'
 require 'flonkerton'
-require 'rexml/document'
 
 require 'classes/exceptions'
 require 'classes/player'
-require 'classes/settings'
 require 'classes/game_window'
 require 'classes/enemy_grid'
 require 'classes/score'
