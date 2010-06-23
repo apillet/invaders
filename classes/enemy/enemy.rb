@@ -38,12 +38,10 @@ class Enemy
     @shooting_event.destroy
     @shooting_event = nil
     @@enemies.delete self
-    Logger.log("Enemy died",self)
   end
 
   def shoot
     EnemyBullet.new(@window,@x + (@width / 2), @y + @height)
-    Logger.log("Enemy shot bullet", self)
   end
 
   def renew_shooting_pattern

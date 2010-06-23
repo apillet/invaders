@@ -14,7 +14,6 @@ class EnemyFireBullet < Bullet
       @x += speed / 4
     when :none then
     end
-    Logger.log("Bullet is on #{@x} - #{@y}",self)
     destroy if @y >= @window.height
   end
 

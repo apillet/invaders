@@ -23,13 +23,10 @@ class Player
       case x
       when :left then
         @x = 0
-        Logger.log 'Player has been placed at left', self
       when :center then
         @x = (@window.width/2) - (@width / 2)
-        Logger.log('Player has been placed at center', self)
       when :right then
         @x = @window.width - @width
-        Logger.log 'Player has been placed at right', self
       end
     end
     @y = @window.height - Settings.PLAYER_Y_POSITION_FROM_BOTTOM.to_i
@@ -40,16 +37,10 @@ class Player
     when :left then
       unless @x <= Settings.PLAYER_MOVING_DISTANCE.to_i then
         @x -= Settings.PLAYER_MOVING_DISTANCE.to_i
-        Logger.log("Player has been moved to the left, now being at x=#{@x}", self)
-      else
-        Logger.log("Player cannot move further to the left",self)
       end
     when :right then
       unless @window.width - @x <= Settings.PLAYER_MOVING_DISTANCE.to_i then
         @x += Settings.PLAYER_MOVING_DISTANCE.to_i
-        Logger.log("Player has been moved to the right, now being at x=#{@x}", self)
-      else
-        Logger.log("Player cannot move further to the right",self)
       end
     end
   end
@@ -101,16 +92,13 @@ private
     case type
     when :single then
       NormalBullet.new(@window,@x + (@width / 2), @y)
-      Logger.log("Shot single bullet", self)
     when :double then
       NormalBullet.new(@window,@x + (@width / 3), @y)
       NormalBullet.new(@window,(@x + @width) - (@width / 3), @y)
-      Logger.log("Shot double bullet", self)
     when :triple then
       NormalBullet.new(@window,@x + (@width / 4), @y, :left)
       NormalBullet.new(@window,@x + (@width / 2), @y)
       NormalBullet.new(@window,(@x + @width) - (@width / 4), @y, :right)
-      Logger.log("Shot triple bullet", self)
     end
     @last_shot = Gosu::milliseconds
   end

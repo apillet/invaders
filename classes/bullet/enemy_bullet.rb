@@ -6,7 +6,6 @@ class EnemyBullet < Bullet
 
   def move
     @y += speed
-    Logger.log("Bullet is on #{@x} - #{@y}",self)
     destroy if @y >= @window.height
   end
 

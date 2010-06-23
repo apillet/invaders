@@ -20,7 +20,6 @@ class Bullet
       @x += speed / 2
     when :none then
     end
-    Logger.log("Bullet is on #{@x} - #{@y}",self)
     destroy if @y <= 0
   end
 
@@ -30,7 +29,6 @@ class Bullet
 
   def destroy
     @@bullets.delete self
-    Logger.log("Bullet died",self)
   end
 
   def collides?(player)

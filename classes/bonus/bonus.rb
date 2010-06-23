@@ -12,7 +12,6 @@ class Bonus
 
   def move
     @y += speed
-    Logger.log("Bonus is on #{@x} - #{@y}",self)
     destroy if @x <= 0
   end
 
@@ -22,7 +21,6 @@ class Bonus
 
   def destroy
     @@bonuses.delete self
-    Logger.log("Bonus died",self)
   end
 
   def collides?(player)
