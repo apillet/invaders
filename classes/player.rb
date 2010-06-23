@@ -5,15 +5,15 @@ class Player
   def initialize
     @lives = 5
     @score = 0
-    @width = 25
-    @height = 30
+    @image = Flonkerton::Images[:ship]
+    @width = @image.width
+    @height = @image.height
     @x = Flonkerton::CONFIG[:width] / 2 - @width / 2
     @y = Flonkerton::CONFIG[:height] - Flonkerton::CONFIG[:PLAYER_Y_POSITION_FROM_BOTTOM].to_i
     @health = 2
     @perk = DefaultPerk.new
     @old_perk = @perk
     @last_shot = Gosu::milliseconds
-    @image = Flonkerton::Images[:ship]
   end
 
   def move_left
