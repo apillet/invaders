@@ -14,17 +14,20 @@ class Player
     @image = Flonkerton::Images[:ship]
   end
 
-  def move(direction)
-    case direction
-    when :left then
-      unless @x <= Flonkerton::CONFIG[:PLAYER_MOVING_DISTANCE].to_i then
-        @x -= Flonkerton::CONFIG[:PLAYER_MOVING_DISTANCE].to_i
-      end
-    when :right then
-      unless Flonkerton::CONFIG[:width] - @x <= Flonkerton::CONFIG[:PLAYER_MOVING_DISTANCE].to_i then
-        @x += Flonkerton::CONFIG[:PLAYER_MOVING_DISTANCE].to_i
-      end
+  def move_left
+    unless @x <= moving_distance
+      @x -= moving_distance
     end
+  end
+
+  def move_right
+    unless Flonkerton::CONFIG[:width] - @x <= moving_distance
+      @x += moving_distance
+    end
+  end
+
+  def moving_distance
+    @moving_distance ||= Flonkerton::CONFIG[:PLAYER_MOVING_DISTANCE].to_i
   end
 
   def shoot

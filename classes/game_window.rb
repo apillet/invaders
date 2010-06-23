@@ -18,14 +18,9 @@ class GameWindow < Flonkerton::Screen
   def update
     close if @player.dead?
 
-    if button_down? Gosu::Button::KbLeft then
-      @player.move :left
-    elsif button_down? Gosu::Button::KbRight then
-      @player.move :right
-    end
-    if button_down? Gosu::Button::KbSpace then
-      @player.shoot
-    end
+    @player.move_left  if button_down? Gosu::KbLeft
+    @player.move_right if button_down? Gosu::KbRight
+    @player.shoot      if button_down? Gosu::KbSpace
 
     ScheduledEvent.call_all
     RandomEvent.call_all
