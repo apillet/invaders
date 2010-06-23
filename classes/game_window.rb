@@ -25,9 +25,6 @@ class GameWindow < Flonkerton::Screen
     if button_down? Gosu::Button::KbSpace then
       @player.shoot
     end
-    if button_down? Gosu::Button::KbEscape then
-      close
-    end
 
     ScheduledEvent.call_all
     RandomEvent.call_all
