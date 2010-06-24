@@ -23,7 +23,7 @@ class Player
   end
 
   def move_right
-    unless Flonkerton::CONFIG[:width] - @x <= moving_distance
+    unless Flonkerton::CONFIG[:width] - @x <= moving_distance + @image.width
       @x += moving_distance
     end
   end
