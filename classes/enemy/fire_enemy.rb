@@ -1,14 +1,14 @@
 class FireEnemy < Enemy
   def initialize(x_y)
     super
-    @width = 26
-    @height = 24
     @img = Flonkerton::Images[:fire_enemy]
+    @width = @img.width
+    @height = @img.height
     @facing = :left
   end
 
   def shoot
-    direction = [:left,:none,:right].shuffle.first
+    direction = [:left, :none, :right].sample
     EnemyFireBullet.new(@x + (@width / 2), @y + @height, direction)
   end
 

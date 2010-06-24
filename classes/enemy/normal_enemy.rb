@@ -2,9 +2,9 @@
 
   def initialize(x_y)
     super
-    @width = 26
-    @height = 23
     @img = Flonkerton::Images[:normal_enemy]
+    @width = @img.width
+    @height = @img.height
     @facing = :right
   end
 
