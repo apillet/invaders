@@ -42,6 +42,7 @@ class GameWindow < Flonkerton::Screen
       Enemy.all.each do |enemy|
         if player_bullet.collides?(enemy) then
           enemy.hurt(player_bullet.power)
+          @player.score(Score.for?(enemy.class))
           player_bullet.destroy
         end
       end

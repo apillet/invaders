@@ -8,8 +8,6 @@ class PlayerBullet < Bullet
   def collides?(enemy)
     if @x >= enemy.x and @x <= enemy.x + enemy.width then
       if @y >= enemy.y and @y <= enemy.y + enemy.height then
-        # TODO: Add score
-#        @window.player.score(Score.for?(enemy.class))
         true
       end
     else
