@@ -26,14 +26,7 @@ class Bonus
   end
 
   def collides?(player)
-    if @x >= player.x and @x <= player.x + player.width then
-      player.warn
-      if @y >= player.y and @y <= player.y + player.height then
-        true
-      end
-    else
-      false
-    end
+    @x >= player.x and @x <= player.x + player.width and @y >= player.y and @y <= player.y + player.height
   end
 
   def self.move_all

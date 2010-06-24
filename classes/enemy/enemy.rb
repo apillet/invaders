@@ -5,7 +5,6 @@ class Enemy
     @width, @height = 20,20
     @x, @y = x_y[0], x_y[1]
     @img = nil
-    @pattern = nil
     @facing = nil
     @health = 1
     @shooting_seconds = 30
@@ -53,23 +52,12 @@ class Enemy
   end
   
   def collides?(player)
-    if @x >= player.x and @x <= player.x + player.width then
-      player.warn
-      if @y >= player.y and @y <= player.y + player.height then
-        true
-      end
-    else
-      false
-    end
+    @x >= player.x and @x <= player.x + player.width and @y >= player.y and @y <= player.y + player.height
   end
 
   def hurt(damage)
     @health -= damage
     destroy if @health <= 0
-  end
-
-  def warn
-
   end
 
   def self.move_all

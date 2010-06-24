@@ -6,18 +6,10 @@ class PlayerBullet < Bullet
   end
 
   def collides?(enemy)
-    if @x >= enemy.x and @x <= enemy.x + enemy.width then
-      if @y >= enemy.y and @y <= enemy.y + enemy.height then
-        true
-      end
-    else
-      false
-    end
+    @x >= enemy.x and @x <= enemy.x + enemy.width and @y >= enemy.y and @y <= enemy.y + enemy.height
   end
 
   def self.all
     @@player_bullets
   end
-
 end
-

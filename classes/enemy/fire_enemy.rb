@@ -4,7 +4,6 @@ class FireEnemy < Enemy
     @width = 26
     @height = 24
     @img = Flonkerton::Images[:fire_enemy]
-    @pattern = nil
     @facing = :left
   end
 

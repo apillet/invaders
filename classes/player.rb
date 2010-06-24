@@ -79,10 +79,6 @@ class Player
     puts "Scored #{points}!"
   end
 
-  def warn
-
-  end
-
 private
 
   def _shoot(type)

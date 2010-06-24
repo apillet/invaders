@@ -5,7 +5,6 @@
     @width = 26
     @height = 23
     @img = Flonkerton::Images[:normal_enemy]
-    @pattern = nil
     @facing = :right
   end
 
