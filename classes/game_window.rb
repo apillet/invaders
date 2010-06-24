@@ -4,7 +4,7 @@ class GameWindow < Flonkerton::Screen
 
   def setup
     @player = Player.new
-    @grid = EnemyGrid.new(width, height, 2, 8)
+    initialize_level
     initialize_events
   end
 
@@ -84,6 +84,25 @@ class GameWindow < Flonkerton::Screen
 
     ScheduledEvent.new(0.7) do
       Enemy.move_all
+    end
+  end
+
+  def initialize_level num = 0
+    levels = Flonkerton::CONFIG[:levels]
+    level = levels[num][:enemies]
+    enemy_type = Flonkerton::CONFIG[:enemy_type]
+    padding_x = Flonkerton::CONFIG[:padding_x]
+    padding_y = Flonkerton::CONFIG[:padding_y]
+    enemy_width = Flonkerton::CONFIG[:enemy_width]
+    enemy_height = Flonkerton::CONFIG[:enemy_height]
+
+    level.each_with_index do |line, y|
+      line.split('').each_with_index do |char, x|
+        if klass = enemy_type[char.to_sym]
+          position = [padding_x + x * enemy_width, padding_y + y * enemy_height]
+          Module.class_eval(klass).new(position)
+        end
+      end
     end
   end
 end

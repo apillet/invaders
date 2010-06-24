@@ -4,7 +4,6 @@ require 'flonkerton'
 require 'classes/exceptions'
 require 'classes/player'
 require 'classes/game_window'
-require 'classes/enemy_grid'
 require 'classes/score'
 
 require 'classes/event/event'

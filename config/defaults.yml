@@ -42,6 +42,29 @@
 #
 :PLAYER_MOVING_DISTANCE: 10
 :PLAYER_Y_POSITION_FROM_BOTTOM: 40
-:START_LEVEL: 1
-:n: NormalEnemy
-:f: FireEnemy
+
+# Levels
+#
+:levels:
+  -
+    :name: 'First Wave'
+    :enemies: ['fffnnnnnfff',
+               'n.n.n.n.n.n',
+               'fffffffffff',
+               'nnnnnnnnnnn',
+               'fffnnnnnfff',
+               'n.n.n.n.n.n']
+  -
+    :name: 'Second Wave'
+    :enemies: ['nfff',
+               'n.n.',
+               'ffff',
+               'nnnn']
+
+:enemy_type:
+  :f: FireEnemy
+  :n: NormalEnemy
+:padding_x: 40
+:padding_y: 30
+:enemy_width: 50
+:enemy_height: 37.5
