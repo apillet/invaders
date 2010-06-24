@@ -4,8 +4,8 @@ A Space Invaders clone.
 
 ## Description
 
-Trying [Flonkerton](http://github.com/apillet/flonkerton) on the field.
+Trying Flonkerton on the field.
 
 ## Requisites
 
-Just [Gosu](http://www.libgosu.org/).
+[Gosu](http://www.libgosu.org/) and [Flonkerton](http://github.com/apillet/flonkerton).
